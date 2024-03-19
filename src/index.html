@@ -16,7 +16,7 @@
 
     <main>
         <!-- Formulär för att lägga till en ny kurs -->
-        <section id="add-course">
+        <section id="add-section">
             <h2>Lägg till kurs</h2>
             <form id="form-container">
                 <input type="text" id="code" placeholder="Kurskod" required>
@@ -32,6 +32,23 @@
             </form>
         </section>
     </main>
+
+    <!-- Tabell för att visa tillagda kurser -->
+    <section id="course-section">
+        <h2>Kurser</h2>
+        <table id="table-container">
+            <thead>
+                <tr>
+                    <th>Kurskod</th>
+                    <th>Kursnamn</th>
+                    <th>Progression</th>
+                    <th>Kursplan</th>
+                </tr>
+            </thead>
+            <tbody id="courses">
+            </tbody>
+        </table>
+    </section>
 
 </body>
 
