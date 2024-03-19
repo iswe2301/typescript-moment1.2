@@ -1,0 +1,17 @@
+{
+  "name": "dt208g-moment1.2",
+  "version": "1.0.0",
+  "description": "Programmering med TypeScript",
+  "author": "Isa Westling",
+  "license": "ISC",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "sharp": "^0.31.3"
+  }
+}
