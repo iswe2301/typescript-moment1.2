@@ -20,6 +20,22 @@ function init(): void {
     formEl.addEventListener("submit", submitForm); // Lägger till händelselyssnare på submit-knappen i formuläret, anropar funktion
 }
 
+// Funktion för att kontrollera om kurskod är unik bland de sparade kurserna
+function isUnique(code: string): boolean {
+    // Hämtar en lista av alla befintliga kurser från localStorage
+    const courses = getCourses();
+    // Loopar igenom varje kurs i listan för att kontrollera om koden existerar
+    for (let i = 0; i < courses.length; i++) {
+        // Kontrollerar om den aktuella kursen i listan har samma kod som den angivna kurskoden
+        if (courses[i].code == code) {
+            // Returnerar false om en match finns
+            return false;
+        }
+    }
+    // Om ingen kurs med samma kod hittades eller om koden tillhör den kurs som redigeras, returneras true
+    return true;
+}
+
 // Funktion för att skicka formulär
 function submitForm(event: Event) {
     event.preventDefault(); // Förhindrar standardbeteende för formulär
@@ -31,6 +47,12 @@ function submitForm(event: Event) {
         progression: progressionSelect.value,
         syllabus: syllabusInput.value
     };
+
+    // Kontrollerar att den angivna kurskoden är unik
+    if (!isUnique(course.code)) {
+        alert("Kurskoden måste vara unik."); // Om den inte är unik avbryts funktionen och felmeddelande visas
+        return;
+    }
 
     // Hämtar befintliga kurser från localStorage
     const courses = getCourses();
