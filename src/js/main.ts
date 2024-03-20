@@ -156,7 +156,7 @@ function displayCourses(): void {
             // Skapar en cell för redigeringsknappen
             const editEl: HTMLTableCellElement = document.createElement("td")
             const editButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
-            editButton.innerHTML = "Redigera"; // Sätter knappens innehåll
+            editButton.innerHTML = "Redigera <i class='fa-solid fa-pen-to-square'></i>"; // Sätter knappens innehåll
             editButton.addEventListener("click", () => editCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att redigera kurs, skickar med kurskod som argument
             editButton.className = "edit-btn"; // Lägger till en klass för knappen
             editEl.appendChild(editButton); // Lägger till knappen i cellen
@@ -165,7 +165,7 @@ function displayCourses(): void {
             // Skapar en cell för ta-bort knappen
             const deleteEl: HTMLTableCellElement = document.createElement("td");
             const deleteButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
-            deleteButton.innerHTML = "Ta bort"; // Sätter knappens innehåll
+            deleteButton.innerHTML = "Ta bort <i class='fa fa-solid fa-trash-can'></i>"; // Sätter knappens innehåll
             deleteButton.addEventListener("click", () => deleteCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att radera kurs, skickar med kurskod som argument
             deleteButton.className = "delete-btn"; // Lägger till en klass för knappen
             deleteEl.appendChild(deleteButton); // Lägger till knappen i cellen
