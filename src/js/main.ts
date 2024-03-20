@@ -1,9 +1,12 @@
+// Hämtar elementet genom ID
 const formEl = document.getElementById("form-container") as HTMLFormElement; // som formulär
 const codeInput = document.getElementById("code") as HTMLInputElement; // som input
 const nameInput = document.getElementById("name") as HTMLInputElement; // som input
 const progressionSelect = document.getElementById("progression") as HTMLSelectElement; // som select-element
 const syllabusInput = document.getElementById("syllabus") as HTMLInputElement; // som input
 const tableEl = document.getElementById("courses") as HTMLTableSectionElement; // som table-section
+// Lagrar variabel för kurskod för att som hålla reda på vilken kurs som redigeras, tom sträng = ingen kurs redigeras
+let editCode: string = "";
 
 // Interface som definierar strukturen på en kurs, tar emot strängar
 interface CourseInfo {
@@ -26,6 +29,11 @@ function isUnique(code: string): boolean {
     const courses = getCourses();
     // Loopar igenom varje kurs i listan för att kontrollera om koden existerar
     for (let i = 0; i < courses.length; i++) {
+        // Kontrollerar om kursen redigeras och har samma kurskod som en befintlig kurs
+        if (editCode == courses[i].code) {
+            continue; // Hoppar över den aktuella iterationen och fortsätter med nästa kurs i loopen
+        }
+
         // Kontrollerar om den aktuella kursen i listan har samma kod som den angivna kurskoden
         if (courses[i].code == code) {
             // Returnerar false om en match finns
@@ -72,15 +80,23 @@ function submitForm(event: Event) {
         return;
     }
 
-
     // Hämtar befintliga kurser från localStorage
     const courses = getCourses();
-    // Lägger till kurs i listan med sparade kurser
-    courses.push(course);
+    // Kontrollerar om en kurs redigeras (om editcode är inte tom textsträng)
+    if (editCode !== "") {
+        // Söker efter kursens index genom att loopa över alla kurser och jämföra om editCode är samma som kurskoden
+        const index = courses.findIndex(course => course.code === editCode);
+        // Uppdaterar befintlig kurs med ny information.
+        courses[index] = course;
+    } else {
+        // Lägger till ny kurs i listan om den inte redigeras
+        courses.push(course);
+    }
 
     saveCourses(courses); // Sparar den uppdaterade kurslistan i localStorage
     displayCourses(); // Uppdaterar visningen av kurser på webbsidan
     formEl.reset(); // Återställer formuläret
+    editCode = ""; // Rensar editCode inför nästa redigering
 }
 
 // Funktion för att spara kurser i localStorage, tar en array av CourseInfo-objekt som argument
@@ -169,5 +185,8 @@ function editCourse(courseCode: string): void {
         nameInput.value = course.name;
         progressionSelect.value = course.progression;
         syllabusInput.value = course.syllabus;
+
+        // Uppdaterar editcode till den aktuella kursens kod för att inte få fel i unikhet vid submit i formuläret
+        editCode = courseCode;
     }
 }
