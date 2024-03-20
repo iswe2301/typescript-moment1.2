@@ -36,6 +36,18 @@ function isUnique(code: string): boolean {
     return true;
 }
 
+// Funktion för att kontrollera om progressionen är giltig
+function isValid(progression: string): boolean {
+    // Kontrollerar om den angivna progressionen matchar något av de giltiga värdena
+    if (progression == "A" || progression == "B" || progression == "C") {
+        // Returnerar true isåfall
+        return true;
+    } else {
+        // Annars returneras false
+        return false;
+    }
+}
+
 // Funktion för att skicka formulär
 function submitForm(event: Event) {
     event.preventDefault(); // Förhindrar standardbeteende för formulär
@@ -53,6 +65,13 @@ function submitForm(event: Event) {
         alert("Kurskoden måste vara unik."); // Om den inte är unik avbryts funktionen och felmeddelande visas
         return;
     }
+
+    // Kontrollerar att progression är giltig
+    if (!isValid(course.progression)) {
+        alert("Ogiltig progression. Välj A, B, eller C."); // Om inte så avbryts funktionen och ett felmeddelande visas.
+        return;
+    }
+
 
     // Hämtar befintliga kurser från localStorage
     const courses = getCourses();
