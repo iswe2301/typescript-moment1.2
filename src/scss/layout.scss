@@ -18,3 +18,52 @@ header {
   justify-content: center;
   padding: 2rem 0 0 0;
 }
+
+// Styling för formulär
+form {
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  display: flex;
+}
+
+// Styling för tabell
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+
+  th {
+    padding: 0 1rem;
+    text-align: center;
+    background-color: abstracts.$light-grey-color;
+    border-bottom: 1px solid #ccc;
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  tbody tr:hover {
+    background-color: abstracts.$table-hover; // Hover för tabellrader
+  }
+}
+
+// Gör tabellen responsiv, tillåter scroll åt höger vid overflow.
+#responsive-table {
+  overflow-x: auto;
+  width: 100%;
+}
+
+// Styling vid enheter mindre än 600px bredd
+@media (max-width: 600px) {
+  main {
+    width: 100%;
+    margin: 10% auto;
+    padding: 1.5rem;
+  }
+}
