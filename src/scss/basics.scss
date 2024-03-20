@@ -96,3 +96,9 @@ label {
     @include abstracts.heading-style(1.6rem, 2.6rem, 600);
     margin-bottom: 0.5rem;
 }
+
+// Styling för blank div (luft nedanför main)
+#blank {
+    width: 100%;
+    height: 5rem;
+}
