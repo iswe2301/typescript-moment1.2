@@ -16,6 +16,31 @@
     }
 }
 
+.delete-btn {
+    @extend %button-style;
+    width: 12rem;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    background-color: abstracts.$delete-btn-color;
+
+    &:hover {
+        background-color: darken(abstracts.$delete-btn-color, 10%);
+    }
+}
+
+.edit-btn {
+    @extend %button-style;
+    font-size: 1.4rem;
+    width: 12rem;
+    height: 2.6rem;
+    padding: 0;
+    background-color: abstracts.$edit-btn-color;
+
+    &:hover {
+        background-color: darken(abstracts.$edit-btn-color, 10%);
+    }
+}
+
 // Ökar bredd vid mindre skrämar (max 600px)
 @media (max-width: 600px) {
     #submit {
