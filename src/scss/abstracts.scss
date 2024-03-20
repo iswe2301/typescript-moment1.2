@@ -34,3 +34,20 @@ $delete-btn-color: rgb(236, 58, 58);
         background-color: $hover-color;
     }
 }
+
+// Mixin för flesx och centering av layout
+@mixin center-flex() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// Mixin för gemensamma egenskaper för rubriker
+@mixin heading-style($font-size, $line-height, $font-weight) {
+    font-size: $font-size;
+    font-family: $font-heading;
+    color: $primary-color;
+    font-weight: $font-weight;
+    letter-spacing: 0.2rem;
+    line-height: $line-height;
+}
