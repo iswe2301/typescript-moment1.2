@@ -137,6 +137,7 @@ function displayCourses(): void {
         const editEl: HTMLTableCellElement = document.createElement("td")
         const editButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
         editButton.innerHTML = "Redigera"; // Sätter knappens innehåll
+        editButton.addEventListener("click", () => editCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att redigera kurs, skickar med kurskod som argument
         editEl.appendChild(editButton); // Lägger till knappen i cellen
         rowEl.appendChild(editEl); // Lägger till cellen i raden
 
@@ -156,4 +157,17 @@ function deleteCourse(courseCode: string): void {
     courses.filter(course => course.code !== courseCode); // Filtrerar ut alla kurser som inte matchar den aktuella kurskoden och skapar en ny lista
     saveCourses(courses); // Sparar den uppdaterade listan av kurser till localStorage
     displayCourses(); // Anropar funktion för att uppdatera kurserna som visas på webbsidan
+}
+
+// Funktion för att redigera kurs baserat på kurskod
+function editCourse(courseCode: string): void {
+    const course = getCourses().find(course => course.code === courseCode); // Hämtar den aktuella kursen från localStorage baserat på kurskoden
+    // Kontrollerar om en kurs hittades
+    if (course) {
+        // Fyller isåfall i formuläret med kursinformation
+        codeInput.value = course.code;
+        nameInput.value = course.name;
+        progressionSelect.value = course.progression;
+        syllabusInput.value = course.syllabus;
+    }
 }
