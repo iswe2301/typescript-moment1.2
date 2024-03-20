@@ -1,0 +1,25 @@
+@use 'abstracts';
+
+/* STYLING FÖR KNAPPAR */
+
+// Inkluderar stil för standard knappar genom extend
+#submit {
+    @extend %button-style;
+    width: 50%;
+    height: 4rem;
+    margin: 2rem 0 0 50%;
+    font-size: 1.6rem;
+    background-color: abstracts.$add-btn-color;
+
+    &:hover {
+        background-color: darken(abstracts.$add-btn-color, 10%);
+    }
+}
+
+// Ökar bredd vid mindre skrämar (max 600px)
+@media (max-width: 600px) {
+    #submit {
+        width: 100%;
+        margin: 2rem 0 0 0;
+    }
+}
