@@ -63,3 +63,18 @@ p {
     margin: 1.5rem 0;
     max-width: 75ch;
 }
+
+// Styling för sektioner
+section {
+    width: 100%;
+    max-width: 900px;
+}
+
+// Styling för länkar
+a {
+    color: abstracts.$link-color;
+
+    &:hover {
+        color: abstracts.$hover-color;
+    }
+}
