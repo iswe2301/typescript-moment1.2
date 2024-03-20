@@ -158,14 +158,16 @@ function displayCourses(): void {
             const editButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
             editButton.innerHTML = "Redigera"; // Sätter knappens innehåll
             editButton.addEventListener("click", () => editCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att redigera kurs, skickar med kurskod som argument
+            editButton.className = "edit-btn"; // Lägger till en klass för knappen
             editEl.appendChild(editButton); // Lägger till knappen i cellen
             rowEl.appendChild(editEl); // Lägger till cellen i raden
 
-            // Skapa en cell för ta-bort knappen
+            // Skapar en cell för ta-bort knappen
             const deleteEl: HTMLTableCellElement = document.createElement("td");
             const deleteButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
             deleteButton.innerHTML = "Ta bort"; // Sätter knappens innehåll
             deleteButton.addEventListener("click", () => deleteCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att radera kurs, skickar med kurskod som argument
+            deleteButton.className = "delete-btn"; // Lägger till en klass för knappen
             deleteEl.appendChild(deleteButton); // Lägger till knappen i cellen
             rowEl.appendChild(deleteEl); // Lägger till cellen i raden
         });
