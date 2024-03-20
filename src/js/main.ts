@@ -103,7 +103,16 @@ function displayCourses(): void {
         const deleteEl: HTMLTableCellElement = document.createElement("td");
         const deleteButton: HTMLButtonElement = document.createElement("button"); // Skapar en ny knapp
         deleteButton.innerHTML = "Ta bort"; // Sätter knappens innehåll
+        deleteButton.addEventListener("click", () => deleteCourse(course.code)); // Skapar en händelselyssnare som vid klick anropar funktion för att radera kurs, skickar med kurskod som argument
         deleteEl.appendChild(deleteButton); // Lägger till knappen i cellen
         rowEl.appendChild(deleteEl); // Lägger till cellen i raden
     });
+}
+
+// Funktion för att radera kurs baserat på kurskod
+function deleteCourse(courseCode: string): void {
+    const courses = getCourses(); // Hämtar kurserna som finns sparade i localStorage
+    courses.filter(course => course.code !== courseCode); // Filtrerar ut alla kurser som inte matchar den aktuella kurskoden och skapar en ny lista
+    saveCourses(courses); // Sparar den uppdaterade listan av kurser till localStorage
+    displayCourses(); // Anropar funktion för att uppdatera kurserna som visas på webbsidan
 }
