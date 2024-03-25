@@ -59,6 +59,37 @@ table {
   width: 100%;
 }
 
+// Header
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+  }
+}
+
+// Footer
+footer {
+  width: 100%;
+  height: auto;
+  padding: 2rem 1rem;
+  margin: 10rem 0 0 0;
+  background-color: abstracts.$primary-color;
+  color: abstracts.$light-text-color;
+  text-align: center;
+
+  p {
+    margin: 0;
+    max-width: none;
+  }
+}
+
 // Styling vid enheter mindre än 600px bredd
 @media (max-width: 600px) {
   main {
