@@ -1,6 +1,6 @@
 // Importerar moduler
 import { saveCourses, getCourses } from './storage';
-import { codeInput, nameInput, progressionSelect, syllabusInput, tableEl, coursesEl, newCourseCode } from './variables';
+import { codeInput, nameInput, progressionSelect, syllabusInput, tableEl, coursesEl, newCourseCode, popupEl } from './variables';
 
 // Funktion för att visa sparade kurser på webbsidan
 export function displayCourses(): void {
@@ -70,6 +70,15 @@ export function deleteCourse(courseCode: string): void {
     let remainingCourses = courses.filter(course => course.code !== courseCode); // Filtrerar ut alla kurser som inte matchar den aktuella kurskoden och skapar en ny lista
     saveCourses(remainingCourses); // Sparar den uppdaterade listan av kurser till localStorage
     displayCourses(); // Anropar funktion för att uppdatera kurserna som visas på webbsidan
+
+    popupEl.classList.add("show"); // Lägger till klassen show vid klick på knappen
+    popupEl.innerHTML = `Kursen ${courseCode} har raderats.`; // Skapar innehållet för popupen
+
+    // Döljer popup efter 3 sekunder
+    setTimeout(function () {
+        popupEl.classList.remove("show"); // Tar bort show-klassen
+        popupEl.innerHTML = ''; // Tömmer innehållet
+    }, 3000); // 3 sekunder
 }
 
 // Funktion för att redigera kurs baserat på kurskod

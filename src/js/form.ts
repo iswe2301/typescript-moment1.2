@@ -3,7 +3,7 @@ import { courseInfo } from './interface';
 import { displayCourses } from './courses';
 import { saveCourses, getCourses } from './storage';
 import { isUnique, isValid } from './validation';
-import { formEl, codeInput, nameInput, progressionSelect, syllabusInput, newCourseCode } from './variables';
+import { formEl, codeInput, nameInput, progressionSelect, syllabusInput, newCourseCode, popupEl } from './variables';
 
 // Funktion för att skicka formulär
 export function submitForm(event: Event) {
@@ -46,4 +46,13 @@ export function submitForm(event: Event) {
     displayCourses(); // Uppdaterar visningen av kurser på webbsidan
     formEl.reset(); // Återställer formuläret
     newCourseCode.editCode = ""; // Rensar editCode inför nästa redigering
+
+    popupEl.classList.add("show"); // Lägger till klassen show vid klick på knappen
+    popupEl.innerHTML = `Kursen ${course.code} tillagd i "Mina kurser"!`; // Skapar innehållet för popupen
+
+    // Döljer popup efter 3 sekunder
+    setTimeout(function () {
+        popupEl.classList.remove("show"); // Tar bort show-klassen
+        popupEl.innerHTML = ''; // Tömmer innehållet
+    }, 3000); // 3 sekunder
 }
