@@ -9,10 +9,10 @@
     height: 4rem;
     margin: 2rem 0 0 50%;
     font-size: 1.6rem;
-    background-color: abstracts.$add-btn-color;
+    background-color: abstracts.$link-color;
 
     &:hover {
-        background-color: darken(abstracts.$add-btn-color, 10%);
+        background-color: abstracts.$hover-color;
     }
 }
 
@@ -39,6 +39,30 @@
     &:hover {
         background-color: darken(abstracts.$edit-btn-color, 10%);
     }
+}
+
+// Styling för popup vid klick på skapa inköpslista
+.popup {
+    width: 100%;
+    height: 0;
+    background-color: abstracts.$link-color;
+    color: white;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    font-family: abstracts.$font-text;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    transition: height 1s; // Lägger transition på höjden, höjden ändras under 1 sekund
+}
+
+// Styling för när popup visas
+.popup.show {
+    height: 5rem;
+    padding-top: 1rem;
 }
 
 // Ökar bredd vid mindre skrämar (max 600px)
